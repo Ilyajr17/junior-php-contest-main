@@ -17,10 +17,9 @@ function createConnection()
     return $db;
 }
 
-//$pdo = createConnection();
 
 
-print_r(createConnection()->connect());
+
 
 
 
