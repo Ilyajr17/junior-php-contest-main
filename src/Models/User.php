@@ -14,7 +14,11 @@ class User
     public function save()
     {
         $pdo = \App\db\DB::getInstance()->getConnection();
-        $this->created_at = date('Y-m-d');
+
+        date_default_timezone_set('Europe/Samara');
+        $this->created_at = date("Y-m-d H:i:s");
+
+        // $this->created_at = date('Y-m-d');
         $sql = "INSERT INTO users (email, first_name, last_name, password, created_at) VALUES (:email, :first_name, :last_name, :password, :created_at)";
         $query = $pdo->prepare($sql);
         $query->execute([

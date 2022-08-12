@@ -13,7 +13,11 @@ class Post
     public function save()
     {
         $pdo = \App\db\DB::getInstance()->getConnection();
-        $this->created_at = date('Y-m-d');
+
+        date_default_timezone_set('Europe/Samara');
+        $this->created_at = date("Y-m-d H:i:s");
+
+        // $this->created_at = date('Y-m-d');
         $sql = "INSERT INTO post (title, body, created_at, creator_id) VALUES (:title, :body, :created_at, :creator_id)";
         $query = $pdo->prepare($sql);
         $query->execute([
@@ -40,13 +44,13 @@ class Post
 
         $post = new Post;
 
-        while ($row = $query->fetch(\PDO::FETCH_ASSOC)) {
-            $post->id = $row['id'];
-            $post->title = $row['title'];
-            $post->body = $row['body'];
-            $post->created_at = $row['created_at'];
-            $post->creator_id = $row['creator_id'];
-        }
+        $row = $query->fetch(\PDO::FETCH_ASSOC);
+        $post->id = $row['id'];
+        $post->title = $row['title'];
+        $post->body = $row['body'];
+        $post->created_at = $row['created_at'];
+        $post->creator_id = $row['creator_id'];
+
         return $post;
     }
 }
