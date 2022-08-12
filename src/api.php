@@ -29,9 +29,9 @@ class Api
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-           
+
             $userData = json_decode(file_get_contents('php://input'), true);
-            
+
             $user = new User();
             $user->email = $userData['email'];
             $user->first_name = $userData['first_name'];

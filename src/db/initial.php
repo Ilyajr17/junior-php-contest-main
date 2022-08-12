@@ -30,5 +30,3 @@ function initializeDb($db)
 
     //TODO: Create initial tables
 }
-
-
