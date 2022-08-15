@@ -16,4 +16,3 @@ function createConnection()
 
     return $db;
 }
-

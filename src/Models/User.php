@@ -9,7 +9,8 @@ class User extends Manager
     public $last_name;
     public $password;
     public $created_at;
-    protected $table = 'users';
-    
-
+    protected static $table = 'users';
+    //protected $table = 'users';
+    protected $sqlInsert = "INSERT INTO users (email, first_name, last_name, password, created_at) VALUES (:email, :first_name, :last_name, :password, :created_at)";
 }
+
